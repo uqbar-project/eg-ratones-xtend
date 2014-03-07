@@ -4,25 +4,24 @@ import java.util.ArrayList
 import java.util.List
 
 class RatonInversor {
-	
+
 	List<Inversion> inversionesPendientes
 	List<Inversion> inversionesRealizadas
-	double dineroDisponible	
-	
+	double dineroDisponible
+
 	new() {
 		inversionesPendientes = new ArrayList<Inversion>
 		dineroDisponible = 0.0
 	}
-	
+
 	/**
 	 * 
 	 * PUNTO 3
 	 */
 	def double getCostoInversionesPendientes() {
-		inversionesPendientes.fold(0.0, [ acum, inversion | acum + inversion.costo] )
+		inversionesPendientes.fold(0.0, [acum, inversion|acum + inversion.costo])
 	}
-	
-	
+
 	/**
 	 * PUNTO 4a
 	 */
@@ -32,32 +31,45 @@ class RatonInversor {
 			inversionesRealizadas.add(inversion)
 		}
 	}
-	
+
 	def puedeRealizar(Inversion inversion) {
 		inversion.costo <= dineroDisponible
 	}
-	 
+
 	/**
 	 * PUNTO 4b
 	 */
 	def boolean realizarInversionesPendientes() {
-		if (!inversionesPendientes.forall [ puedeRealizar(it) ]) {
-			return false	
-		} 
-		inversionesPendientes.forEach [ realizar(it) ]
+		if (!inversionesPendientes.forall[puedeRealizar(it)]) {
+			return false
+		}
+		inversionesPendientes.forEach[realizar(it)]
 		true
 	}
-	
 
 	/**
-	 * PUNTO 5
+	 * PUNTO 5a
 	 */
 	def boolean esMasRatonQue(RatonInversor otro) {
 		this.costoInversionesRealizadas < otro.costoInversionesRealizadas
 	}
-	
+
 	def double costoInversionesRealizadas() {
-		inversionesRealizadas.fold(0.0, [ acum, inversion | acum + inversion.costo ])
+		inversionesRealizadas.fold(0.0, [acum, inversion|acum + inversion.costo])
 	}
-	
-}	
+
+	/**
+	 * PUNTO 5b
+	 */
+	def esAmbicioso() {
+		costoInversionesPendientes > (dineroDisponible * 2)
+	}
+
+	def dilapidarCapital() {
+		inversionesPendientes.forEach[inversion|
+			if (puedeRealizar(inversion)) {
+				realizar(inversion)
+			}]
+	}
+
+}
