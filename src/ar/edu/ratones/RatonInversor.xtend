@@ -5,25 +5,47 @@ import java.util.List
 
 class RatonInversor {
 
-	List<Inversion> inversionesPendientes
-	List<Inversion> inversionesRealizadas
+	@Property List<Inversion> inversionesPendientes
+	@Property  List<Inversion> inversionesRealizadas
 	double dineroDisponible
 
+	/**
+	 * *****************************************************************
+	 * INICIALIZACION 
+	 * *****************************************************************
+	 */
 	new() {
-		inversionesPendientes = new ArrayList<Inversion>
 		dineroDisponible = 0.0
+		this.init
+	}
+
+	new(double dinero) {
+		dineroDisponible = dinero
+		this.init
+	}
+
+	def void init() {
+		inversionesPendientes = new ArrayList<Inversion>
+		inversionesRealizadas = new ArrayList<Inversion>
+	}
+
+	def agregarInversionPendiente(Inversion inversion) {
+		inversionesPendientes.add(inversion)
 	}
 
 	/**
-	 * 
+	 * *****************************************************************
 	 * PUNTO 3
+	 * *****************************************************************
 	 */
 	def double getCostoInversionesPendientes() {
 		inversionesPendientes.fold(0.0, [acum, inversion|acum + inversion.costo])
 	}
 
 	/**
+	 * *****************************************************************
 	 * PUNTO 4a
+	 * *****************************************************************
 	 */
 	def void realizar(Inversion inversion) {
 		if (puedeRealizar(inversion)) {
@@ -37,18 +59,22 @@ class RatonInversor {
 	}
 
 	/**
+	 * *****************************************************************
 	 * PUNTO 4b
+	 * *****************************************************************
 	 */
 	def boolean realizarInversionesPendientes() {
 		if (!inversionesPendientes.forall[puedeRealizar(it)]) {
 			return false
 		}
-		inversionesPendientes.forEach[realizar(it)]
+		inversionesPendientes.clone.forEach[realizar(it)]
 		true
 	}
 
 	/**
+	 * *****************************************************************
 	 * PUNTO 5a
+	 * *****************************************************************
 	 */
 	def boolean esMasRatonQue(RatonInversor otro) {
 		this.costoInversionesRealizadas < otro.costoInversionesRealizadas
@@ -59,7 +85,9 @@ class RatonInversor {
 	}
 
 	/**
+	 * *****************************************************************
 	 * PUNTO 5b
+	 * *****************************************************************
 	 */
 	def esAmbicioso() {
 		costoInversionesPendientes > (dineroDisponible * 2)
@@ -71,5 +99,6 @@ class RatonInversor {
 				realizar(inversion)
 			}]
 	}
-
+	
 }
+

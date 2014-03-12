@@ -7,10 +7,20 @@ class Flautista {
 	
 	Set<RatonInversor> ratones
 	
+	/**
+	 * *****************************************************************
+	 * INICIALIZACION
+	 * *****************************************************************
+	 */
 	new() {
 		ratones = new HashSet
 	}
 	
+	/**
+	 * *****************************************************************
+	 * PUNTO 5.2
+	 * *****************************************************************
+	 */
 	def void tocar() {
 		ratonesAmbiciosos.forEach [ raton | raton.dilapidarCapital ]
 	}
