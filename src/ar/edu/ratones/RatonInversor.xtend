@@ -6,8 +6,8 @@ import java.util.List
 class RatonInversor {
 
 	@Property List<Inversion> inversionesPendientes
-	@Property  List<Inversion> inversionesRealizadas
-	double dineroDisponible
+	@Property List<Inversion> inversionesRealizadas
+	@Property double dineroDisponible
 
 	/**
 	 * *****************************************************************

@@ -91,4 +91,12 @@ class TestInversiones {
 		Assert.assertEquals(0, ratonazo.inversionesRealizadas.size)
 	}
 
+	@Test
+	def void realizarInversionesPendientesDarthMousePobreton() {
+		darthMouse.dineroDisponible = 10000d 
+		Assert.assertFalse(darthMouse.realizarInversionesPendientes)
+		Assert.assertEquals(2, darthMouse.inversionesPendientes.size)
+		Assert.assertEquals(0, darthMouse.inversionesRealizadas.size)
+	}
+
 }
