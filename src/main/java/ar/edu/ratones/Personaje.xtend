@@ -1,9 +1,12 @@
 package ar.edu.ratones
 
+import org.eclipse.xtend.lib.annotations.Accessors
+
+@Accessors
 class Personaje {
 
-	@Property String nombre
-	@Property double sueldo
+	String nombre
+	double sueldo
 	
 	/**
 	 * *****************************************************************

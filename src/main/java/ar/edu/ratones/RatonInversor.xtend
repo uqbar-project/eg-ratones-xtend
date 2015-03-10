@@ -2,12 +2,14 @@ package ar.edu.ratones
 
 import java.util.ArrayList
 import java.util.List
+import org.eclipse.xtend.lib.annotations.Accessors
 
+@Accessors
 class RatonInversor {
 
-	@Property List<Inversion> inversionesPendientes
-	@Property List<Inversion> inversionesRealizadas
-	@Property double dineroDisponible
+	List<Inversion> inversionesPendientes
+	List<Inversion> inversionesRealizadas
+	double dineroDisponible
 
 	/**
 	 * *****************************************************************

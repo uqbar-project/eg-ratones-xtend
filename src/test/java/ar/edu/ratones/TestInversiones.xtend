@@ -17,7 +17,7 @@ class TestInversiones {
 	@Before
 	def void init() {
 		peliLocoPorMary = new Pelicula(40000d, 4000d)
-		peliLocoPorMary.agregarPersonaje(new Personaje("Cameron Díaz", 200))
+		peliLocoPorMary.agregarPersonaje(new Personaje("Cameron Diaz", 200))
 		peliLocoPorMary.agregarPersonaje(new Personaje("Matt Dillon", 350))
 		peliLocoPorMary.agregarPersonaje(new Personaje("Ben Stiller", 1200))
 		peliLocoPorMary.agregarPersonaje(new Personaje("Lee Evans", 180))
@@ -25,16 +25,16 @@ class TestInversiones {
 		peliLocoPorMary.agregarPersonaje(new Personaje("Lin Shaye", 60))
 
 		peliCarancho = new PeliculaIndependiente(10000d, 10d)
-		peliCarancho.agregarPersonaje(new Personaje("Ricardo Darín", 1000))
-		peliCarancho.agregarPersonaje(new Personaje("Loren Acuña", 15))
-		peliCarancho.agregarPersonaje(new Personaje("Martina Gusmán", 50))
-		peliCarancho.agregarPersonaje(new Personaje("José Luis Arias", 20))
+		peliCarancho.agregarPersonaje(new Personaje("Ricardo Darin", 1000))
+		peliCarancho.agregarPersonaje(new Personaje("Loren AcuÃ±a", 15))
+		peliCarancho.agregarPersonaje(new Personaje("Martina Gusman", 50))
+		peliCarancho.agregarPersonaje(new Personaje("Jose Luis Arias", 20))
 		peliCarancho.agregarPersonaje(new Personaje("Fabio Ronzano", 5))
 		peliCarancho.agregarPersonaje(new Personaje("Carlos Weber", 40))
 
 		peliNaufrago2 = new Pelicula(30000d, 10000d)
 		peliNaufrago2.agregarPersonaje(new Personaje("Tom Hanks", 2500))
-		peliNaufrago2.agregarPersonaje(new Personaje("Paul Sánchez", 30))
+		peliNaufrago2.agregarPersonaje(new Personaje("Paul Sanchez", 30))
 
 		paramount = new Compania(0.5d)
 		paramount.agregarPelicula(peliLocoPorMary)

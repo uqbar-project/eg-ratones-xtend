@@ -2,12 +2,14 @@ package ar.edu.ratones
 
 import java.util.ArrayList
 import java.util.List
+import org.eclipse.xtend.lib.annotations.Accessors
 
+@Accessors
 class Pelicula implements Inversion {
 
-	@Property double recaudacion
-	@Property double costoProduccion
-	@Property List<Personaje> personajes
+	double recaudacion
+	double costoProduccion
+	List<Personaje> personajes
 
 	/**
 	 * *****************************************************************

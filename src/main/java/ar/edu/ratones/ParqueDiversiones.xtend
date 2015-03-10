@@ -1,11 +1,13 @@
 package ar.edu.ratones
 
 import java.util.ArrayList
+import org.eclipse.xtend.lib.annotations.Accessors
 
+@Accessors
 class ParqueDiversiones implements Inversion {
 
-	@Property int metrosCuadrados
-	@Property double costoAtracciones
+	int metrosCuadrados
+	double costoAtracciones
 
 	static double CostoMetroCuadrado = 0.0
 
