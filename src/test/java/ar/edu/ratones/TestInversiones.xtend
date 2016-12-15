@@ -16,36 +16,41 @@ class TestInversiones {
 
 	@Before
 	def void init() {
-		peliLocoPorMary = new Pelicula(40000d, 4000d)
-		peliLocoPorMary.agregarPersonaje(new Personaje("Cameron Diaz", 200))
-		peliLocoPorMary.agregarPersonaje(new Personaje("Matt Dillon", 350))
-		peliLocoPorMary.agregarPersonaje(new Personaje("Ben Stiller", 1200))
-		peliLocoPorMary.agregarPersonaje(new Personaje("Lee Evans", 180))
-		peliLocoPorMary.agregarPersonaje(new Personaje("Chris Elliot", 240))
-		peliLocoPorMary.agregarPersonaje(new Personaje("Lin Shaye", 60))
+		peliLocoPorMary = new Pelicula(40000d, 4000d) => [
+			agregarPersonaje(new Personaje("Cameron Diaz", 200))	
+			agregarPersonaje(new Personaje("Matt Dillon", 350))
+			agregarPersonaje(new Personaje("Ben Stiller", 1200))
+			agregarPersonaje(new Personaje("Lee Evans", 180))
+			agregarPersonaje(new Personaje("Chris Elliot", 240))
+			agregarPersonaje(new Personaje("Lin Shaye", 60))
+		]
 
-		peliCarancho = new PeliculaIndependiente(10000d, 10d)
-		peliCarancho.agregarPersonaje(new Personaje("Ricardo Darin", 1000))
-		peliCarancho.agregarPersonaje(new Personaje("Loren Acuña", 15))
-		peliCarancho.agregarPersonaje(new Personaje("Martina Gusman", 50))
-		peliCarancho.agregarPersonaje(new Personaje("Jose Luis Arias", 20))
-		peliCarancho.agregarPersonaje(new Personaje("Fabio Ronzano", 5))
-		peliCarancho.agregarPersonaje(new Personaje("Carlos Weber", 40))
+		peliCarancho = new PeliculaIndependiente(10000d, 10d) => [
+			agregarPersonaje(new Personaje("Ricardo Darin", 1000))
+			agregarPersonaje(new Personaje("Loren Acuña", 15))
+			agregarPersonaje(new Personaje("Martina Gusman", 50))
+			agregarPersonaje(new Personaje("Jose Luis Arias", 20))
+			agregarPersonaje(new Personaje("Fabio Ronzano", 5))
+			agregarPersonaje(new Personaje("Carlos Weber", 40))
+		]
 
-		peliNaufrago2 = new Pelicula(30000d, 10000d)
-		peliNaufrago2.agregarPersonaje(new Personaje("Tom Hanks", 2500))
-		peliNaufrago2.agregarPersonaje(new Personaje("Paul Sanchez", 30))
+		peliNaufrago2 = new Pelicula(30000d, 10000d) => [
+			agregarPersonaje(new Personaje("Tom Hanks", 2500))
+			agregarPersonaje(new Personaje("Paul Sanchez", 30))
+		]
 
-		paramount = new Compania(0.5d)
-		paramount.agregarPelicula(peliLocoPorMary)
-		paramount.agregarPelicula(peliCarancho)
+		paramount = new Compania(0.5d) => [
+			agregarPelicula(peliLocoPorMary)
+			agregarPelicula(peliCarancho)
+		]
 
 		ParqueDiversiones.costoPorMetroCuadrado = 20d
 		italPark = new ParqueDiversiones(100, 3000d)
 
-		darthMouse = new RatonInversor(100000d)
-		darthMouse.agregarInversionPendiente(paramount)
-		darthMouse.agregarInversionPendiente(italPark)
+		darthMouse = new RatonInversor(100000d) => [
+			agregarInversionPendiente(paramount)
+			agregarInversionPendiente(italPark)
+		]
 		ratonazo = new RatonInversor(100d)
 		ratonazo.agregarInversionPendiente(peliNaufrago2)
 	}
