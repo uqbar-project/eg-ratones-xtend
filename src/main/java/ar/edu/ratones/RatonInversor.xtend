@@ -96,11 +96,9 @@ class RatonInversor {
 	}
 
 	def dilapidarCapital() {
-		inversionesPendientes.forEach[inversion|
-			if (puedeRealizar(inversion)) {
-				realizar(inversion)
-			}]
+		inversionesPendientes.clone.forEach [ inversion |
+			realizar(inversion)
+		]
 	}
-	
-}
 
+}

@@ -1,6 +1,5 @@
 package ar.edu.ratones
 
-import java.util.ArrayList
 import org.eclipse.xtend.lib.annotations.Accessors
 
 @Accessors
@@ -44,7 +43,7 @@ class ParqueDiversiones implements Inversion {
 	 * *****************************************************************
 	 */
 	override personajesInvolucrados() {
-		new ArrayList<Personaje>
+		#[]
 	}
 
 }

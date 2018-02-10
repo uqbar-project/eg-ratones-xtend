@@ -2,11 +2,10 @@ package ar.edu.ratones
 
 import org.eclipse.xtend.lib.annotations.Accessors
 
-@Accessors
 class Personaje {
 
 	String nombre
-	double sueldo
+	@Accessors double sueldo
 	
 	/**
 	 * *****************************************************************
@@ -17,5 +16,5 @@ class Personaje {
 		nombre = unNombre
 		sueldo = unSueldo
 	}
-		
+
 }

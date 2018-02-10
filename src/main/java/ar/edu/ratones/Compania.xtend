@@ -5,28 +5,18 @@ import java.util.List
 
 class Compania implements Inversion {
 	
-	List<Pelicula> peliculas
-	double porcentajeRecaudacion
+	List<Pelicula> peliculas = newArrayList
+	double porcentajeRecaudacion = 0.0
 	
 	/**
 	 * *****************************************************************
 	 * INICIALIZACION
 	 * *****************************************************************
 	 */
-	new() {
-		porcentajeRecaudacion = 0.0
-		this.init
-	}
-	
 	new(double unPorcentaje) {
 		porcentajeRecaudacion = unPorcentaje
-		this.init
 	}
 	
-	def void init() {
-		peliculas = new ArrayList<Pelicula>
-	}
-
 	def agregarPelicula(Pelicula pelicula) {
 		peliculas.add(pelicula)
 	}

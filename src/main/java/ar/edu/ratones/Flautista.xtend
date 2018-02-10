@@ -5,15 +5,15 @@ import java.util.Set
 
 class Flautista {
 	
-	Set<RatonInversor> ratones
+	Set<RatonInversor> ratones = new HashSet
 	
 	/**
 	 * *****************************************************************
 	 * INICIALIZACION
 	 * *****************************************************************
 	 */
-	new() {
-		ratones = new HashSet
+	def void agregarRaton(RatonInversor raton) {
+		ratones.add(raton) 
 	}
 	
 	/**
@@ -26,7 +26,7 @@ class Flautista {
 	}
 	
 	def getRatonesAmbiciosos() {
-		ratones.filter [ raton | raton.esAmbicioso ]
+		ratones.filter [ raton | raton.esAmbicioso ].toSet
 	}
 	
 }

@@ -1,8 +1,8 @@
 package ar.edu.ratones
 
+import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
-import org.junit.Assert
 
 class TestInversiones {
 
@@ -13,7 +13,10 @@ class TestInversiones {
 	ParqueDiversiones italPark
 	RatonInversor darthMouse
 	RatonInversor ratonazo
-
+	Flautista hamelin
+	Personaje tomHanks = new Personaje("Tom Hanks", 2500)
+	Personaje paulSanchez = new Personaje("Paul Sanchez", 30)
+	
 	@Before
 	def void init() {
 		peliLocoPorMary = new Pelicula(40000d, 4000d) => [
@@ -35,8 +38,8 @@ class TestInversiones {
 		]
 
 		peliNaufrago2 = new Pelicula(30000d, 10000d) => [
-			agregarPersonaje(new Personaje("Tom Hanks", 2500))
-			agregarPersonaje(new Personaje("Paul Sanchez", 30))
+			agregarPersonaje(tomHanks)
+			agregarPersonaje(paulSanchez)
 		]
 
 		paramount = new Compania(0.5d) => [
@@ -53,6 +56,11 @@ class TestInversiones {
 		]
 		ratonazo = new RatonInversor(100d)
 		ratonazo.agregarInversionPendiente(peliNaufrago2)
+		
+		hamelin = new Flautista => [
+			agregarRaton(darthMouse)
+			agregarRaton(ratonazo)
+		]
 	}
 
 	@Test
@@ -60,6 +68,11 @@ class TestInversiones {
 		Assert.assertEquals(12530d, peliNaufrago2.costo, 0.01)
 	}
 
+	@Test
+	def void personajesNaufrago() {
+		Assert.assertEquals(#[tomHanks, paulSanchez], peliNaufrago2.personajesInvolucrados)
+	}
+	
 	@Test
 	def void costoCarancho() {
 		Assert.assertEquals(10d, peliCarancho.costoProduccion, 0.01)
@@ -72,6 +85,10 @@ class TestInversiones {
 		Assert.assertEquals(5000d, italPark.costo, 0.01)
 	}
 
+	@Test
+	def void personajesInvolucradosItalpark() {
+		Assert.assertEquals(#[], italPark.personajesInvolucrados)
+	}
 	@Test
 	def void costoParamount() {
 		Assert.assertEquals(25000d, paramount.costo, 0.01)
@@ -102,6 +119,19 @@ class TestInversiones {
 		Assert.assertFalse(darthMouse.realizarInversionesPendientes)
 		Assert.assertEquals(2, darthMouse.inversionesPendientes.size)
 		Assert.assertEquals(0, darthMouse.inversionesRealizadas.size)
+	}
+
+	@Test
+	def void ratonesAmbiciososDeHamelin() {
+		Assert.assertEquals(#{ratonazo}, hamelin.ratonesAmbiciosos)
+	}
+	
+	@Test
+	def void ratonesAmbiciososDilapidanFortunaDeHamelin() {
+		Assert.assertEquals(0, ratonazo.costoInversionesRealizadas, 0.001)
+		ratonazo.agregarInversionPendiente(new ParqueDiversiones(1, 10d))
+		hamelin.tocar
+		Assert.assertEquals(30, ratonazo.costoInversionesRealizadas, 0.001)
 	}
 
 }
