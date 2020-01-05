@@ -1,9 +1,12 @@
 package ar.edu.ratones
 
+import java.util.ArrayList
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
+
+import static ar.edu.ratones.ParqueDiversiones.*
 import static org.junit.jupiter.api.Assertions.assertEquals
 import static org.junit.jupiter.api.Assertions.assertFalse
 import static org.junit.jupiter.api.Assertions.assertTrue
@@ -13,7 +16,7 @@ class TestInversiones {
 
 	@Nested
 	@DisplayName("Dada una película común")
-	static class CasoPeliculaComun {
+	class CasoPeliculaComun {
 		Personaje tomHanks = RatonesInversoresFactory.tomHanks
 		Personaje paulSanchez = RatonesInversoresFactory.paulSanchez
 		Pelicula peliNaufrago2
@@ -39,7 +42,7 @@ class TestInversiones {
 
 	@Nested
 	@DisplayName("Dada una película independiente")
-	static class CasoPeliculaIndependiente {
+	class CasoPeliculaIndependiente {
 		Pelicula peliCarancho
 
 		@BeforeEach
@@ -58,7 +61,7 @@ class TestInversiones {
 
 	@Nested
 	@DisplayName("Dado un parque de diversiones")
-	static class CasoParqueDiversiones {
+	class CasoParqueDiversiones {
 		ParqueDiversiones italPark
 
 		@BeforeEach
@@ -82,7 +85,7 @@ class TestInversiones {
 
 	@Nested
 	@DisplayName("Dada una compañía que produce películas")
-	static class CasoCompania {
+	class CasoCompania {
 		Compania paramount
 
 		@BeforeEach
@@ -99,7 +102,7 @@ class TestInversiones {
 
 	@Nested
 	@DisplayName("Dado un ratón inversor común")
-	static class CasoRatonInversorComun {
+	class CasoRatonInversorComun {
 		RatonInversor darthMouse
 
 		@BeforeEach
@@ -125,7 +128,7 @@ class TestInversiones {
 
 	@Nested
 	@DisplayName("Dado un ratón inversor común con poca plata")
-	static class CasoRatonInversorComunConPocaPlata {
+	class CasoRatonInversorComunConPocaPlata {
 		RatonInversor darthMouse
 
 		@BeforeEach
@@ -145,13 +148,20 @@ class TestInversiones {
 
 	@Nested
 	@DisplayName("Dado un ratón inversor ambicioso")
-	static class CasoRatonInversorAmbicioso {
-		RatonInversor ambicioso = RatonesInversoresFactory.ratonInversorAmbicioso
+	class CasoRatonInversorAmbicioso {
+		RatonInversor ambicioso
+		
+		@BeforeEach
+		def void init() {
+			ambicioso = RatonesInversoresFactory.ratonInversorAmbicioso
+		}
 
 		@Test
-		@DisplayName("no realiza inversiones pendientes porque aun cuando es ambicioso no tiene suficiente dinero")
+		@DisplayName("no realiza inversiones si no tiene suficiente plata")
 		def void realizarInversionesPendientesAmbicioso() {
-			assertFalse(ambicioso.realizarInversionesPendientes)
+			assertEquals(1, ambicioso.inversionesPendientes.size)
+			assertEquals(0, ambicioso.inversionesRealizadas.size)
+			ambicioso.realizarInversionesPendientes
 			assertEquals(1, ambicioso.inversionesPendientes.size)
 			assertEquals(0, ambicioso.inversionesRealizadas.size)
 		}
@@ -160,7 +170,7 @@ class TestInversiones {
 
 	@Nested
 	@DisplayName("Dado un flautista de Hamelin")
-	static class CasoFlautistaHamelin {
+	class CasoFlautistaHamelin {
 		Flautista hamelin = RatonesInversoresFactory.flautistaHamelin
 		RatonInversor ambicioso = RatonesInversoresFactory.ratonInversorAmbicioso
 
@@ -225,7 +235,7 @@ class RatonesInversoresFactory {
 	static def compania() {
 		new Compania(0.5d) => [
 			agregarPelicula(peliLocoPorMary)
-			agregarPelicula(ar.edu.ratones.RatonesInversoresFactory.peliIndependiente)
+			agregarPelicula(RatonesInversoresFactory.peliIndependiente)
 		]
 	}
 
@@ -245,11 +255,14 @@ class RatonesInversoresFactory {
 	static def ratonInversorAmbicioso() {
 		// lazy initialization
 		if (ambicioso === null) {
-			ambicioso = new RatonInversor(100d) => [
-				agregarInversionPendiente(ar.edu.ratones.RatonesInversoresFactory.peliComun)
-			]
+			ambicioso = new RatonInversor(100d)
 		}
-		ambicioso
+		ambicioso => [
+			inversionesPendientes = newArrayList => [
+				add(RatonesInversoresFactory.peliComun)
+			]
+			inversionesRealizadas = newArrayList
+		]
 	}
 
 	static def flautistaHamelin() {
