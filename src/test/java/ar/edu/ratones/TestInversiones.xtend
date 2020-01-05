@@ -1,6 +1,5 @@
 package ar.edu.ratones
 
-import java.util.ArrayList
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Nested
@@ -16,7 +15,7 @@ class TestInversiones {
 
 	@Nested
 	@DisplayName("Dada una película común")
-	class CasoPeliculaComun {
+	static class CasoPeliculaComun {
 		Personaje tomHanks = RatonesInversoresFactory.tomHanks
 		Personaje paulSanchez = RatonesInversoresFactory.paulSanchez
 		Pelicula peliNaufrago2
@@ -42,7 +41,7 @@ class TestInversiones {
 
 	@Nested
 	@DisplayName("Dada una película independiente")
-	class CasoPeliculaIndependiente {
+	static class CasoPeliculaIndependiente {
 		Pelicula peliCarancho
 
 		@BeforeEach
@@ -61,7 +60,7 @@ class TestInversiones {
 
 	@Nested
 	@DisplayName("Dado un parque de diversiones")
-	class CasoParqueDiversiones {
+	static class CasoParqueDiversiones {
 		ParqueDiversiones italPark
 
 		@BeforeEach
@@ -85,7 +84,7 @@ class TestInversiones {
 
 	@Nested
 	@DisplayName("Dada una compañía que produce películas")
-	class CasoCompania {
+	static class CasoCompania {
 		Compania paramount
 
 		@BeforeEach
@@ -102,7 +101,7 @@ class TestInversiones {
 
 	@Nested
 	@DisplayName("Dado un ratón inversor común")
-	class CasoRatonInversorComun {
+	static class CasoRatonInversorComun {
 		RatonInversor darthMouse
 
 		@BeforeEach
@@ -128,7 +127,7 @@ class TestInversiones {
 
 	@Nested
 	@DisplayName("Dado un ratón inversor común con poca plata")
-	class CasoRatonInversorComunConPocaPlata {
+	static class CasoRatonInversorComunConPocaPlata {
 		RatonInversor darthMouse
 
 		@BeforeEach
@@ -148,7 +147,7 @@ class TestInversiones {
 
 	@Nested
 	@DisplayName("Dado un ratón inversor ambicioso")
-	class CasoRatonInversorAmbicioso {
+	static class CasoRatonInversorAmbicioso {
 		RatonInversor ambicioso
 		
 		@BeforeEach
@@ -170,7 +169,7 @@ class TestInversiones {
 
 	@Nested
 	@DisplayName("Dado un flautista de Hamelin")
-	class CasoFlautistaHamelin {
+	static class CasoFlautistaHamelin {
 		Flautista hamelin = RatonesInversoresFactory.flautistaHamelin
 		RatonInversor ambicioso = RatonesInversoresFactory.ratonInversorAmbicioso
 
