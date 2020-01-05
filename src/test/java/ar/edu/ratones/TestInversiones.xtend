@@ -195,7 +195,7 @@ class RatonesInversoresFactory {
 
 	public static Personaje tomHanks = new Personaje("Tom Hanks", 2500)
 	public static Personaje paulSanchez = new Personaje("Paul Sanchez", 30)
-	static RatonInversor ambicioso
+	public static RatonInversor ambicioso
 
 	private static def peliLocoPorMary() {
 		new Pelicula(40000d, 4000d) => [
