@@ -267,7 +267,7 @@ class RatonesInversoresFactory {
 	static def flautistaHamelin() {
 		new Flautista => [
 			agregarRaton(ratonInversorComun)
-//			agregarRaton(ratonInversorAmbicioso)
+			agregarRaton(ratonInversorAmbicioso)
 		]
 	}
 
