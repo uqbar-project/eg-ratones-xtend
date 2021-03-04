@@ -1,7 +1,7 @@
 
 # Ejercicio de Diseño - Ratones inversores
 
-[![Build Status](https://travis-ci.org/uqbar-project/eg-ratones-xtend.svg?branch=master)](https://travis-ci.org/uqbar-project/eg-ratones-xtend)  [![Coverage Status](https://coveralls.io/repos/github/uqbar-project/eg-ratones-xtend/badge.svg?branch=master&service=github&refresh=1)](https://coveralls.io/github/uqbar-project/eg-ratones-xtend?branch=master&service=github&refresh=1)
+[![Build Status](https://travis-ci.com/uqbar-project/eg-ratones-xtend.svg?branch=master)](https://travis-ci.com/uqbar-project/eg-ratones-xtend)  [![Coverage Status](https://coveralls.io/repos/github/uqbar-project/eg-ratones-xtend/badge.svg?branch=master&service=github&refresh=1)](https://coveralls.io/github/uqbar-project/eg-ratones-xtend?branch=master&service=github&refresh=1)
 
 ![image](images/mickey.jpg) 
 
